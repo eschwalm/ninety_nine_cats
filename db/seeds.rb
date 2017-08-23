@@ -9,6 +9,7 @@
 COLORS = ["White", "Green", "Red", "Orange", "Brown", "Yellow", "Blue"].freeze
 
 Cat.destroy_all
+CatRentalRequest.destroy_all
 
 cat1 = Cat.create!(
         birth_date: Faker::Date.backward(2000).strftime("%Y/%m/%d"),
@@ -51,3 +52,24 @@ cat5 = Cat.create!(
       )
 
 puts "Create 5 cats"
+
+
+rental1 = CatRentalRequest.create!(
+        cat_id: 2,
+        start_date: Faker::Date.backward(20).strftime("%Y/%m/%d"),
+        end_date: Faker::Date.backward(10).strftime("%Y/%m/%d"),
+        status: 'APPROVED'
+        )
+
+rental2 = CatRentalRequest.create!(
+        cat_id: 2,
+        start_date: Faker::Date.backward(20).strftime("%Y/%m/%d"),
+        end_date: Faker::Date.backward(10).strftime("%Y/%m/%d")
+        )
+
+rental3 = CatRentalRequest.create!(
+        cat_id: 2,
+        start_date: Faker::Date.backward(200).strftime("%Y/%m/%d"),
+        end_date: Faker::Date.backward(100).strftime("%Y/%m/%d")
+        )
+puts "create 3 rental requests"

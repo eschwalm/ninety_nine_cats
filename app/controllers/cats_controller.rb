@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  before_action :set_cat, only: [:show, :edit, :update]
+  before_action :set_cat, only: [:show, :edit, :update, :destroy]
 
   def index
     @cats = Cat.all
@@ -34,6 +34,11 @@ class CatsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @cat.destroy
+    redirect_to cats_url
   end
 
   private
